@@ -1,0 +1,31 @@
+.main {
+  max-width: 520;
+}
+
+.app-main {
+  background-color: white;
+  min-height: 430px;
+  max-height: 430px;
+  overflow-y: scroll;
+}
+
+.member {
+  margin-top: 40px;
+  background-color: white;
+  min-height: 290px;
+  max-height: 290px;
+  overflow-y: scroll;
+}
+
+button {
+  margin-top: 24px;
+  margin-right: 0;
+}
+
+.footer {
+  bottom: 0;
+  padding: 0;
+}
+h1 {
+  margin: 0;
+}

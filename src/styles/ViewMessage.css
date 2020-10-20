@@ -1,0 +1,15 @@
+
+.align {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.name {
+  font-size: 1.8em;
+  margin: 0;
+}
+
+p {
+  font-size: 1.3em;
+  word-wrap: break-word;
+}

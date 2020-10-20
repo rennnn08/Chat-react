@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const api = process.env.REACT_APP_API_URL;
 export default function Login(props :any){ 
 
   const { register, handleSubmit, errors } = useForm();
@@ -58,7 +59,7 @@ export default function Login(props :any){
   }
 
   const onSubmit = () => {
-    axios.post("http://localhost:3001/login",
+    axios.post(`${process.env.REACT_APP_API_URL}/login`,
     {
       user: {
         email: email,

@@ -58,7 +58,7 @@ export default function Registration(props :any){
   }
 
   const onSubmit = () => {
-    axios.post("http://localhost:3001/signup",
+    axios.post(`${process.env.REACT_APP_API_URL}/signup`,
     {
       user: {
         name: name,

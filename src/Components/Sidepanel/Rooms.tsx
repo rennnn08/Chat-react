@@ -89,7 +89,7 @@ const Rooms: FC = () => {
   const open = Boolean(anchorEl);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/rooms',
+    axios.get(`${process.env.REACT_APP_API_URL}/rooms`,
     {
       params: {
         user_id: currentUser.userstate?.id
@@ -105,7 +105,7 @@ const Rooms: FC = () => {
   },[]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/rooms',
+    axios.get(`${process.env.REACT_APP_API_URL}rooms`,
     {
       params: {
         user_id: currentUser.userstate?.id
@@ -122,7 +122,7 @@ const Rooms: FC = () => {
 
   useEffect(() => {
     room.setChange_flag(false);
-    axios.get('http://localhost:3001/rooms',
+    axios.get(`${process.env.REACT_APP_API_URL}/rooms`,
     {
       params: {
         user_id: currentUser.userstate?.id
@@ -141,7 +141,7 @@ const Rooms: FC = () => {
   const hundleSubmit = (e: SyntheticEvent) => {
     setErrors("");
     if (name) {
-      axios.post("http://localhost:3001/rooms",
+      axios.post(`${process.env.REACT_APP_API_URL}/rooms`,
       {
         room: {
           name: name,
@@ -151,7 +151,7 @@ const Rooms: FC = () => {
       { withCredentials: true}
       ).then(response => {
         if (response.data.status === 'created'){
-          axios.get('http://localhost:3001/rooms',
+          axios.get(`${process.env.REACT_APP_API_URL}/rooms`,
           {
             params: {
               user_id: currentUser.userstate?.id

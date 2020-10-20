@@ -35,7 +35,7 @@ const UserShow: FC = () => {
   const classes = useStyle();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/users/:id',
+    axios.get(`${process.env.REACT_APP_API_URL}/users/:id`,
     {
       params: {
         user_id: User.user_id

@@ -32,7 +32,7 @@ const ChageProf = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:3001/users/:id',
+    axios.get(`${process.env.REACT_APP_API_URL}/users/:id`,
     {
       params: {
         user_id: currentUser.userstate?.id
@@ -51,7 +51,7 @@ const ChageProf = () => {
   },[]);
 
   const handleSubmit = () => {
-    axios.patch(`http://localhost:3001/users/${currentUser.userstate?.id}`,
+    axios.patch(`${process.env.REACT_APP_API_URL}/users/${currentUser.userstate?.id}`,
     {
       user: {
         user_id: currentUser.userstate?.id,
@@ -72,7 +72,7 @@ const ChageProf = () => {
       console.log(error);
     })
 
-    axios.get("http://localhost:3001/logged_in", { withCredentials: true})
+    axios.get(`${process.env.REACT_APP_API_URL}/logged_in`, { withCredentials: true})
       .then((response) => {
         currentUser.setUserState(response.data.user);
         

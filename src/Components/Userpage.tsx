@@ -46,7 +46,7 @@ const Userpage: FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/users/:id',
+    axios.get(`${process.env.REACT_APP_API_URL}/users/:id`,
     {
       params: {
         user_id: User.userstate?.id

@@ -60,7 +60,7 @@ const App: FC<Props> = ({ cableApp }) => {
   }
 
   const handleLogoutClick = () => {
-    axios.delete("http://localhost:3001/logout",{ withCredentials: true })
+    axios.delete(`${process.env.REACT_APP_API_URL}/logout`,{ withCredentials: true })
       .then(response => {
         handleLogout()
       }).catch(error => console.log("ログアウトエラー", error))

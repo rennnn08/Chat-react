@@ -21,7 +21,7 @@ const Home: FC<Props> = ({cableApp}) => {
   const currentUser = useContext(CurrentUserContext);
 
   const roomsGet = () => {
-    axios.get('http://localhost:3001/rooms',
+    axios.get(`${process.env.REACT_APP_API_URL}/rooms`,
     {
       params: {
         user_id: currentUser.userstate?.id

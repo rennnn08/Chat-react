@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent, useContext } from 'react';
+import React, { useState, SyntheticEvent, useContext, FC } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
@@ -39,8 +39,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const api = process.env.REACT_APP_API_URL;
-export default function Login(props :any){ 
+type Props = {
+  setauth: () => void;
+}
+
+const Login:FC<Props> =({setauth}) => { 
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -131,15 +134,10 @@ export default function Login(props :any){
             ログイン
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="sign-up" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+            <Grid container item justify="flex-end">
+              <Button  onClick={setauth}>
+                Don't have an account? Sign Up
+              </Button>
             </Grid>
           </Grid>
         </form>
@@ -149,3 +147,5 @@ export default function Login(props :any){
     </Container>
   );
 }
+
+export default Login;

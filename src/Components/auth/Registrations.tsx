@@ -1,4 +1,4 @@
-import React, { useState, SyntheticEvent, useContext } from 'react';
+import React, { useState, SyntheticEvent, useContext, FC } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext, UserContext } from "../../Provider";
@@ -41,7 +41,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Registration(props :any){ 
+type Props = {
+  setauth: () => void;
+}
+
+const Registration:FC<Props> = ({setauth}) => { 
   const { register, handleSubmit, errors } = useForm();
   const user = useContext(CurrentUserContext);
   const [name, setName] = useState("");
@@ -168,9 +172,9 @@ export default function Registration(props :any){
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="Home" variant="body2">
+                <Button onClick={setauth} >
                   Already have an account? Sign in
-                </Link>
+                </Button>
               </Grid>
             </Grid>
           </form>
@@ -182,4 +186,4 @@ export default function Registration(props :any){
   );
 }
 
-//export default Registration;
+export default Registration;

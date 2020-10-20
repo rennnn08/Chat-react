@@ -4,12 +4,12 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Home from './Components/Home';
+import Auth from "./Components/auth/auth";
 import Login from './Components/auth/Login';
 import Userpage from './Components/Userpage';
 import ChangeProf from "./Components/ChangeProf";
 import { CurrentUserContext } from "./Provider";
 import actionCable from 'actioncable';
-import Registration from 'Components/auth/Registrations';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -56,7 +56,7 @@ const App: FC<Props> = ({ cableApp }) => {
   const handleLogout = () => {
     user.setLoginStatus(false);
     user.setUserState(null);
-    navigate("/login");
+    navigate("/auth");
   }
 
   const handleLogoutClick = () => {
@@ -99,14 +99,12 @@ const App: FC<Props> = ({ cableApp }) => {
     </div>
 
     <Routes>
-      <PrivateRoute  path="/" component={Home} cableApp={cableApp} redirectLink="/login"/>
-      <PrivateRoute path="/mypage" component={Userpage} redirectLink="/login"/>
-      <Route path="/sign-up" element={ user && user.userstate ? <Home cableApp={cableApp}/>
-        : <Registration/> }/>
-      <Route path="/login" element={user && user.loginStatus ? <Home cableApp={cableApp}/> 
-        : <Login/> }/>
-      <PrivateRoute path="/changeprof" component={ChangeProf} redirectLink="/login"/>
-      <PrivateRoute path="/home" component={Home} cableApp={cableApp} redirectLink="/login"/>
+      <PrivateRoute  path="/" component={Home} cableApp={cableApp} redirectLink="/auth"/>
+      <PrivateRoute path="/mypage" component={Userpage} redirectLink="/auth"/>
+      <Route path="/auth" element={user && user.loginStatus ? <Home cableApp={cableApp}/> 
+        : <Auth/> }/>
+      <PrivateRoute path="/changeprof" component={ChangeProf} redirectLink="/auth"/>
+      <PrivateRoute path="/home" component={Home} cableApp={cableApp} redirectLink="/auth"/>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   </>

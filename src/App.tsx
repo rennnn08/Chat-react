@@ -77,7 +77,7 @@ const App: FC<Props> = ({ cableApp }) => {
         <Toolbar>
           
           <Typography variant="h6" className={classes.title}>
-            <Link to="/" style={{color: 'white', textDecoration: "none" }}>YUUTA</Link>
+            <Link to="/home" style={{color: 'white', textDecoration: "none" }}>YUUTA</Link>
           </Typography>
           { (() => {
             try{

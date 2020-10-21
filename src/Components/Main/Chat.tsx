@@ -341,11 +341,11 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
         {invitation ? <Invite User_ids={user_ids} getUsers={getUsers}/>:<Messages messageData={ messages } />}
       </div> 
       <Grid container>
-        <Grid item xs={10}>
+        
           <TextField  
           onChange={event => setMessage(event.target.value)} 
           label="メッセージ"
-          fullWidth
+          style={{width:"80%"}}
           helperText={errors}
           required
           inputProps={{
@@ -360,8 +360,6 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
           }
           }
         />
-        </Grid>
-        <Grid item xs={1}>
           <Button 
             variant="contained"
             className={classes.button} 
@@ -371,10 +369,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
           >
             send
           </Button>
-        </Grid>
       </Grid>
-      
-      
     </>
   )
 }

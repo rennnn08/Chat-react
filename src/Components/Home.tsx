@@ -39,7 +39,7 @@ const Home: FC<Props> = ({cableApp}) => {
 
   return(
     <div className="main">
-    <Grid container spacing={2}>
+    <Grid container>
       <Grid item md={3} xs={4}>
         <SidePanel/>
       </Grid>

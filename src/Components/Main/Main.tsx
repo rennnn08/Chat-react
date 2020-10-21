@@ -19,11 +19,11 @@ const Main: FC<Props> = ({cableApp, roomsGet}) =>{
   const main = useContext(MainContext);
 
   return (
-    <>
+    <div style={{paddingLeft:10}}>
       {main.type === 'Chat' && <Chat cableApp={cableApp} roomsGet={roomsGet}/>}
       {main.type === 'Api' && <Bot/>}
       {main.type === 'UserPage' && <UserShow />}
-    </>
+    </div>
   )
 }
 

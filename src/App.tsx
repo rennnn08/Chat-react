@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Home from './Components/Home';
 import Auth from "./Components/auth/auth";
-import Login from './Components/auth/Login';
 import Userpage from './Components/Userpage';
 import ChangeProf from "./Components/ChangeProf";
 import { CurrentUserContext } from "./Provider";
@@ -16,7 +15,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import  PrivateRoute from "./PrivateRoute";
-import { Box } from '@material-ui/core';
 
 import './styles/App.css';
 const title = 'Home';

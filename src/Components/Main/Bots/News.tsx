@@ -1,4 +1,4 @@
-import React, { FC, useState, useContext } from 'react';
+import React, { FC, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import { CurrentUserContext } from "../../../Provider";
 import actionCable from 'actioncable';
@@ -17,6 +17,7 @@ import { User } from '../../../Types';
 import '../../../styles/ChatRoom.css';
 import '../../../styles/Bots.css';
 import ViewMessage from '../Chat/ViewMessage';
+import { StringLiteral } from 'typescript';
 
 type Props = {
   cableApp :actionCable.Cable;
@@ -43,10 +44,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type article = {
   title: string;
+  description: string;
   url: string;
+  urlToImage: string;
 }
 
-const Qiita: FC = () =>{
+const News: FC = () =>{
   const user = useContext(CurrentUserContext);
   const [text, setText] = useState("");
   const [message, setMessage] = useState("");
@@ -57,48 +60,26 @@ const Qiita: FC = () =>{
 
   const classes = useStyles();
 
-  const hundleSubmit = () => {
-    if (text) {
-      setErrors("");
-      setMessage(text);
-      axios.get("https://qiita.com/api/v2/items",
-      {
-        params: {
-          "page": "1",
-          "per_page": "20",
-          "query": text,
-        }
-      },
-      ).then(response => {
-        console.log(response.data);
-        setFlag(true);
-        
-        setArticles(response.data);
-
-      }).catch(error => {
-        console.log("message error", error)
-      })
-    }
-    else {
-      setErrors("メッセージを入力してください")
-    }
-  }
+  useEffect(() => {
+    axios.get('http://newsapi.org/v2/top-headlines?' + 'country=jp&' + 'apikey=19ca5bf0dc3d4d4083598934aeec936b')
+    .then(response => {
+      console.log(response);
+      setArticles(response.data.articles);
+    })
+  },[])
   
 
   return (
     <>
-      <h1>Qiitaくん</h1>
+      <h1>Newsくん</h1>
       <div className='app-main' id={"scroll-area"}>
-        {flag && user.userstate && (<ViewMessage message={message} user={user.userstate}/>) }
+        
         
         {articles.map((t)=>(
           <List className={classes.root} key={t.title}>
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar
-                  alt="Martian"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT5lquvS_JqssPqAlVj1dQhMuzLgtQRUSrEYg&usqp=CAU"
-                />
+                <Avatar src={t.urlToImage}/>
               </ListItemAvatar>
               <ListItemText
                 primary={ <h4 className="title">{t.title}</h4> }
@@ -121,31 +102,8 @@ const Qiita: FC = () =>{
           </List>
         ))}
       </div>
-      <TextField  
-        onChange={event => setText(event.target.value)} 
-        label="メッセージ"
-        style = {{width: "80%"}}
-        helperText={errors}
-        required
-        onKeyDown={e => {
-          if (e.keyCode === 13) {
-            // エンターキー押下時の処理
-            e.preventDefault();
-            hundleSubmit();
-          }
-        }
-        }
-      />
-      <Button 
-        variant="contained"
-        className={classes.button} 
-        onClick={hundleSubmit} 
-        color="primary"
-        endIcon={<Icon>send</Icon>}>
-        send
-      </Button>
     </>
   )
 }
 
-export default Qiita;
+export default News;

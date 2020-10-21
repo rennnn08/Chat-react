@@ -92,12 +92,6 @@ const Registration:FC<Props> = ({setauth}) => {
       <Container component="main" maxWidth="xs" style={{backgroundColor:'white'}}>
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
           <form className={classes.form} noValidate onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={2}>
               <Grid item xs={12}>

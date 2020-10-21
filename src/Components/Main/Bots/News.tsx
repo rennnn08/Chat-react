@@ -45,7 +45,7 @@ const News: FC = () =>{
   const classes = useStyles();
 
   useEffect(() => {
-    axios.get('http://newsapi.org/v2/top-headlines?country=jp&apikey=19ca5bf0dc3d4d4083598934aeec936b')
+    axios.get('http://newsapi.org/v2/top-headlines?' + 'country=jp&' + 'apikey=19ca5bf0dc3d4d4083598934aeec936b')
     .then(response => {
       console.log(response);
       setArticles(response.data.articles);

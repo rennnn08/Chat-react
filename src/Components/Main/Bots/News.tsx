@@ -1,6 +1,6 @@
 import React, { FC, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import { CurrentUserContext } from "../../../Provider";
+import { BotContext, CurrentUserContext } from "../../../Provider";
 import actionCable from 'actioncable';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -55,6 +55,7 @@ const News: FC = () =>{
   const [message, setMessage] = useState("");
   const [articles, setArticles] = useState<article[]>([]);
   const [errors, setErrors] = useState("");
+  const bot = useContext(BotContext);
 
   const [flag, setFlag] = useState(false);
 
@@ -66,7 +67,7 @@ const News: FC = () =>{
       console.log(response);
       setArticles(response.data.articles);
     })
-  },[])
+  },[bot.bot_id])
   
 
   return (

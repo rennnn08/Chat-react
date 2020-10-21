@@ -1,7 +1,6 @@
-import React, { useContext, useState, useEffect, SyntheticEvent } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { CurrentUserContext, UserContext } from "../Provider";
-
+import { CurrentUserContext } from "../Provider";
 import Container from "@material-ui/core/Container";
 import TextField from '@material-ui/core/TextField';
 import Button from "@material-ui/core/Button";

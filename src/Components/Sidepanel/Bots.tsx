@@ -6,7 +6,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ChatIcon from '@material-ui/icons/Chat';
 import ListItemText from '@material-ui/core/ListItemText';
-import { BotContext, MainContext, RoomContext } from 'Provider';
+import { BotContext, MainContext } from 'Provider';
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
@@ -42,8 +42,14 @@ const Bots: FC = () => {
 
   const hundleSubmit = (e: SyntheticEvent) => {
     setErrors("");
-    
+    const bb:Bot[] = [];
+    Bots.map((bot)=>{
+      if(bot.name.includes(name)){
+        bb.push(bot);
+      }
+    });
     e.preventDefault();
+    setBots(bb);
   }
 
   const apiShow = (id:number) => {

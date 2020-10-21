@@ -8,7 +8,6 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from "@material-ui/core/Button";
-import PersonIcon from '@material-ui/icons/Person';
 import TextField from "@material-ui/core/TextField";
 import { CurrentUserContext, MainContext, RoomContext, UserContext } from 'Provider';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -88,9 +87,8 @@ const Users: FC = () => {
       },
       { withCredentials: true}
       ).then(response => {
-        main.setType("Chat");
         room.setRoom_id(response.data.room.id);
-        
+        main.setType("Chat");
       }).catch(error => {
         console.log("message error", error)
       })

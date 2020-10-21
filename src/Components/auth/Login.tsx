@@ -1,15 +1,10 @@
-import React, { useState, SyntheticEvent, useContext, FC } from 'react';
+import React, { useState, useContext, FC } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import { User } from "../../Types";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useForm } from 'react-hook-form';
@@ -17,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-import { CurrentUserContext, UserContext } from "../../Provider";
+import { CurrentUserContext } from "../../Provider";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

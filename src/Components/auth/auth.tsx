@@ -19,7 +19,7 @@ const Auth = () => {
       <Container maxWidth="md">
     <Grid container>
       <Grid item xs={6}>
-        <img src={CHAT} />
+        <img src={CHAT} alt="chat" />
       </Grid>
       <Grid item xs={6}>
         {auth ? <Registrations setauth={setauth}/> : <Login setauth={setauth}/>}

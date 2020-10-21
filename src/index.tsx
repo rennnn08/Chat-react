@@ -10,7 +10,7 @@ import * as serviceWorker from './serviceWorker';
 
 import './styles/index.css';
 
-const cable = actionCable.createConsumer('ws://localhost:3001/cable');
+const cable = actionCable.createConsumer(`ws:${process.env.REACT_APP_API_URL}/cable`);
 
 ReactDOM.render(
   <React.StrictMode>

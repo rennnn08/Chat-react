@@ -62,7 +62,7 @@ const Login:FC<Props> =({setauth}) => {
   }
 
   const onSubmit = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/login`,
+    axios.post(`http:${process.env.REACT_APP_API_URL}/login`,
     {
       user: {
         email: email,

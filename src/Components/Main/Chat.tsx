@@ -58,7 +58,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
   }
 
   const getUsers = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/getuser_ids`,
+    axios.get(`http:${process.env.REACT_APP_API_URL}/getuser_ids`,
     {
       params: {
         room_id: room.room_id
@@ -92,7 +92,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
   },[room.room_id]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/getuser_ids`,
+    axios.get(`http:${process.env.REACT_APP_API_URL}/getuser_ids`,
     {
       params: {
         room_id: room.room_id
@@ -108,7 +108,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
 
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/rooms/${room.room_id}`,
+    axios.get(`http:${process.env.REACT_APP_API_URL}/rooms/${room.room_id}`,
     {
       params: {
         id: room.room_id
@@ -126,7 +126,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
   },[room.room_id]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/messages`,
+    axios.get(`http:${process.env.REACT_APP_API_URL}/messages`,
     {
       params: {
         room_id: room.room_id
@@ -149,7 +149,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
   const hundleSubmit = () => {
     if (message) {
       setErrors("");
-      axios.post(`${process.env.REACT_APP_API_URL}/messages`,
+      axios.post(`http:${process.env.REACT_APP_API_URL}/messages`,
       {
         message: {
           content: message,
@@ -181,7 +181,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
   }
 
   const leaveClick = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/getuser_ids`,
+    axios.get(`http:${process.env.REACT_APP_API_URL}/getuser_ids`,
     {
       params: {
         room_id: room.room_id
@@ -190,7 +190,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
     .then((results) => {
       updateUsers(results.data)
     })
-    axios.delete(`${process.env.REACT_APP_API_URL}/userbelongsrooms/${room.room_id}`,
+    axios.delete(`http:${process.env.REACT_APP_API_URL}/userbelongsrooms/${room.room_id}`,
     {
       params: {
         user_id: currentUser.userstate?.id,
@@ -199,7 +199,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
     })
     .then((results) => {
       if (user_ids.length === 1){
-        axios.delete(`${process.env.REACT_APP_API_URL}/rooms/${room.room_id}`,
+        axios.delete(`http:${process.env.REACT_APP_API_URL}/rooms/${room.room_id}`,
         {
           params: {
             id: room.room_id
@@ -224,7 +224,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
 
   const deleteClick = () => {
     if (window.confirm("削除しますか？")){
-      axios.delete(`${process.env.REACT_APP_API_URL}/rooms/${room.room_id}`,
+      axios.delete(`http:${process.env.REACT_APP_API_URL}/rooms/${room.room_id}`,
       {
         params: {
           id: room.room_id

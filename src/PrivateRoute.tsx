@@ -28,7 +28,7 @@ const PrivateRoute = ({ component: Component, redirectLink, cableApp,path, ...pr
     const userget = async () : Promise<void> => {
       setLoading(true);
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/logged_in`, { withCredentials: true});
+        const response = await axios.get(`http:${process.env.REACT_APP_API_URL}/logged_in`, { withCredentials: true});
         if (response.data.logged_in && !user.loginStatus){
           user.setLoginStatus(true)
           user.setUserState(response.data.user)

@@ -33,7 +33,7 @@ const Invite: FC<Props> = ({User_ids,getUsers}) => {
 
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/users`)
+    axios.get(`http:${process.env.REACT_APP_API_URL}/users`)
     .then((results) => {
       setUsers(results.data)
       console.log(users)
@@ -50,7 +50,7 @@ const Invite: FC<Props> = ({User_ids,getUsers}) => {
   };
 
   const handleSubmit = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/userbelongsrooms`,
+    axios.post(`http:${process.env.REACT_APP_API_URL}/userbelongsrooms`,
     {
       belong: {
         user_id: user_ids,
@@ -67,7 +67,7 @@ const Invite: FC<Props> = ({User_ids,getUsers}) => {
   }; 
 
   const hundleSearch = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/users`,{
+    axios.get(`http:${process.env.REACT_APP_API_URL}/users`,{
       params:{
         search: search
       }

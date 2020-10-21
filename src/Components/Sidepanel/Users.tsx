@@ -47,7 +47,7 @@ const Users: FC = () => {
   const classes = useStyles();
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/users`,)
+    axios.get(`http:${process.env.REACT_APP_API_URL}/users`,)
     .then((results) => {
       setUsers(results.data)
       console.log(users)
@@ -58,7 +58,7 @@ const Users: FC = () => {
   },[]);
 
   const hundleSubmit = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/users`,{
+    axios.get(`http:${process.env.REACT_APP_API_URL}/users`,{
       params:{
         search: search
       }
@@ -78,7 +78,7 @@ const Users: FC = () => {
   }
 
   const talkCreate = (opponent_id: number, name: string) => {
-    axios.post(`${process.env.REACT_APP_API_URL}/toakcreate`,
+    axios.post(`http:${process.env.REACT_APP_API_URL}/toakcreate`,
       {
         room: {
           name: name,

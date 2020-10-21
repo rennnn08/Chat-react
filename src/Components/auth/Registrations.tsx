@@ -58,7 +58,7 @@ const Registration:FC<Props> = ({setauth}) => {
   const handleSuccessfulAuthentication = (data :any) =>{
     user.setUserState(data.user);
     user.setLoginStatus(true);
-    navigate("/home")
+    navigate("/")
   }
 
   const onSubmit = () => {

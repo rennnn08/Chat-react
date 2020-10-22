@@ -163,6 +163,10 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
       ).then(response => {
         if (response.data.status === 'created'){
           setMessages(response.data.message);
+          const scrollArea = document.getElementById("scroll-area");
+          if (scrollArea) {
+            scrollArea.scrollTop = scrollArea.scrollHeight
+          }
           console.log(response.data.message);
         }
       }).catch(error => {

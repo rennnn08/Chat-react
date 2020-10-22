@@ -105,7 +105,7 @@ const Rooms: FC = () => {
   },[]);
 
   useEffect(() => {
-    axios.get(`http:${process.env.REACT_APP_API_URL}rooms`,
+    axios.get(`http:${process.env.REACT_APP_API_URL}/rooms`,
     {
       params: {
         user_id: currentUser.userstate?.id

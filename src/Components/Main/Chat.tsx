@@ -162,7 +162,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
       { withCredentials: true}
       ).then(response => {
         if (response.data.status === 'created'){
-          setMessage(response.data.message);
+          setMessages(response.data.message);
           console.log(response.data.message);
         }
       }).catch(error => {

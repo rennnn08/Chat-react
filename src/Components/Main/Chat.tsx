@@ -163,6 +163,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
       ).then(response => {
         if (response.data.status === 'created'){
           setMessages(response.data.message);
+          setMessage("");
           const scrollArea = document.getElementById("scroll-area");
           if (scrollArea) {
             scrollArea.scrollTop = scrollArea.scrollHeight
@@ -354,7 +355,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
           style={{width:"80%"}}
           helperText={errors}
           required
-          
+          value={message}
           inputProps={{
             maxLength: 250,
           }}

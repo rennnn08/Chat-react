@@ -20,9 +20,10 @@ import '../../styles/Invite.css';
 type Props = {
   User_ids: number[];
   getUsers: () => void;
+  handleClick: ()=> void;
 }
 
-const Invite: FC<Props> = ({User_ids,getUsers}) => {
+const Invite: FC<Props> = ({User_ids,getUsers,handleClick}) => {
   const [users, setUsers] = useState<User[]>([]);
   const [search, setSearch] = useState("");
 
@@ -62,6 +63,7 @@ const Invite: FC<Props> = ({User_ids,getUsers}) => {
       if(response.data.status === 'created'){
         getUsers();
         room.setChange_flag(true);
+        handleClick();
       }
     })
   }; 

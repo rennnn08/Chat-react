@@ -306,11 +306,6 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
               keepMounted
               open={open}
               onClose={handleClose}
-              PaperProps={{
-                style: {
-                  
-                },
-              }}
             >
               <MenuItem  onClick={handleClose}>
                 <Button
@@ -345,7 +340,7 @@ const Chat: FC<Props> = ({cableApp, roomsGet}) =>{
         </Grid>
       </Grid>
       <div className='app-main' id={"scroll-area"}>
-        {invitation ? <Invite User_ids={user_ids} getUsers={getUsers}/>:<Messages messageData={ messages } />}
+        {invitation ? <Invite User_ids={user_ids} getUsers={getUsers} handleClick={handleClick}/>:<Messages messageData={ messages } />}
       </div> 
       <Grid container>
         

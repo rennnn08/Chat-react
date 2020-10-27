@@ -32,8 +32,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const Users: FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [dense, setDense] = React.useState(false);
-  const [errors, setErrors] = useState("");
   const [search, setSearch] = useState("");
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -108,7 +106,6 @@ const Users: FC = () => {
           fullWidth
           label="名前検索"
           onChange={event => setSearch(event.target.value)}
-          helperText={errors}
           required
           inputProps={{
             maxLength: 20,
@@ -123,7 +120,7 @@ const Users: FC = () => {
         />
       <div className={classes.demo}>
         <div className="Rooms">
-          <List dense={dense}>
+          <List>
             {users.map((user) => (
               currentUser.userstate?.id !== user.id &&
               <ListItem key={user.id}>

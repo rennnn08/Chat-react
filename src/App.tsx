@@ -7,7 +7,7 @@ import Home from './Components/Home';
 import Auth from "./Components/auth/auth";
 import Userpage from './Components/Userpage';
 import ChangeProf from "./Components/ChangeProf";
-import { CurrentUserContext } from "./Provider";
+import { CurrentUserContext, RoomContext } from "./Provider";
 import actionCable from 'actioncable';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -48,12 +48,14 @@ const App: FC<Props> = ({ cableApp }) => {
   const classes = useStyles();
 
   const user = useContext(CurrentUserContext);
+  const room = useContext(RoomContext);
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
     user.setLoginStatus(false);
     user.setUserState(null);
+    room.setRoom_id(null);
     navigate("/auth");
   }
 

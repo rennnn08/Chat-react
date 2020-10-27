@@ -29,7 +29,6 @@ type Bot = {
 
 const Bots: FC = () => {
   const classes = useStyles();
-  const [dense, setDense] = React.useState(false);
   const [name, setName] = useState("");
   const [errors, setErrors] = useState("");
   const [bots, setBots] = useState<Bot[]>([]);
@@ -86,7 +85,7 @@ const Bots: FC = () => {
         />
       <div className={classes.demo}>
         <div className="Rooms">
-          <List dense={dense}>
+          <List>
             {bots.map((bot) => (
               <ListItem key={bot.id}>
                 <ListItemAvatar>
